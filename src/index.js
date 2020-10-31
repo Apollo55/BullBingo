@@ -35,7 +35,9 @@ app.get('/', (req, res) => {
 	var html = new htmlCreator([
 	{ type: 'head', content: [
 		{ type: 'title', content: 'Bulshit Bingo' },
-		{type: 'link rel=\"stylesheet\" href=\"http://'+req.headers.host+'/css"'}]
+		{ type: 'script', content: 'function Change(node){\n'+
+			'node.className="on";}'},
+		{ type: 'link rel=\"stylesheet\" href=\"http://'+req.headers.host+'/css"'}]
 		},
 	{
 		type: 'body',
@@ -44,39 +46,39 @@ app.get('/', (req, res) => {
 			{ type: 'table', content: [
 				{ type: 'caption', content: 'Sandras Sadistisches Bulshit Bingo'},
 				{ type:'tr',content: [
-					{type: 'td', content: getRandomBingo(bingoCoppy)},
-					{type: 'td', content: getRandomBingo(bingoCoppy)},
-					{type: 'td', content: getRandomBingo(bingoCoppy)},
-					{type: 'td', content: getRandomBingo(bingoCoppy)},
-					{type: 'td', content: getRandomBingo(bingoCoppy)},
+					{type: 'td onclick="Change(this)"', content: getRandomBingo(bingoCoppy)},
+					{type: 'td onclick="Change(this)"', content: getRandomBingo(bingoCoppy)},
+					{type: 'td onclick="Change(this)"', content: getRandomBingo(bingoCoppy)},
+					{type: 'td onclick="Change(this)"', content: getRandomBingo(bingoCoppy)},
+					{type: 'td onclick="Change(this")', content: getRandomBingo(bingoCoppy)},
 				]},
 				{ type:'tr', content: [
-					{type: 'td', content: getRandomBingo(bingoCoppy)},
-					{type: 'td', content: getRandomBingo(bingoCoppy)},
-					{type: 'td', content: getRandomBingo(bingoCoppy)},
-					{type: 'td', content: getRandomBingo(bingoCoppy)},
-					{type: 'td', content: getRandomBingo(bingoCoppy)},
+					{type: 'td onclick="Change(this)"', content: getRandomBingo(bingoCoppy)},
+					{type: 'td onclick="Change(this)"', content: getRandomBingo(bingoCoppy)},
+					{type: 'td onclick="Change(this)"', content: getRandomBingo(bingoCoppy)},
+					{type: 'td onclick="Change(this)"', content: getRandomBingo(bingoCoppy)},
+					{type: 'td onclick="Change(this)"', content: getRandomBingo(bingoCoppy)},
 				]},
 				{ type:'tr', content: [
-					{type: 'td', content: getRandomBingo(bingoCoppy)},
-					{type: 'td', content: getRandomBingo(bingoCoppy)},
-					{type: 'td', content: getRandomBingo(bingoCoppy)},
-					{type: 'td', content: getRandomBingo(bingoCoppy)},
-					{type: 'td', content: getRandomBingo(bingoCoppy)},
+					{type: 'td onclick="Change(this)"', content: getRandomBingo(bingoCoppy)},
+					{type: 'td onclick="Change(this)"', content: getRandomBingo(bingoCoppy)},
+					{type: 'td onclick="Change(this)"', content: getRandomBingo(bingoCoppy)},
+					{type: 'td onclick="Change(this)"', content: getRandomBingo(bingoCoppy)},
+					{type: 'td onclick="Change(this)"', content: getRandomBingo(bingoCoppy)},
 				]},
 				{ type:'tr', content: [
-					{type: 'td', content: getRandomBingo(bingoCoppy)},
-					{type: 'td', content: getRandomBingo(bingoCoppy)},
-					{type: 'td', content: getRandomBingo(bingoCoppy)},
-					{type: 'td', content: getRandomBingo(bingoCoppy)},
-					{type: 'td', content: getRandomBingo(bingoCoppy)},
+					{type: 'td onclick="Change(this)"', content: getRandomBingo(bingoCoppy)},
+					{type: 'td onclick="Change(this)"', content: getRandomBingo(bingoCoppy)},
+					{type: 'td onclick="Change(this)"', content: getRandomBingo(bingoCoppy)},
+					{type: 'td onclick="Change(this)"', content: getRandomBingo(bingoCoppy)},
+					{type: 'td onclick="Change(this)"', content: getRandomBingo(bingoCoppy)},
 				]},
 				{ type:'tr', content: [
-					{type: 'td', content: getRandomBingo(bingoCoppy)},
-					{type: 'td', content: getRandomBingo(bingoCoppy)},
-					{type: 'td', content: getRandomBingo(bingoCoppy)},
-					{type: 'td', content: getRandomBingo(bingoCoppy)},
-					{type: 'td', content: getRandomBingo(bingoCoppy)},
+					{type: 'td onclick="Change(this)"', content: getRandomBingo(bingoCoppy)},
+					{type: 'td onclick="Change(this)"', content: getRandomBingo(bingoCoppy)},
+					{type: 'td onclick="Change(this)"', content: getRandomBingo(bingoCoppy)},
+					{type: 'td onclick="Change(this)"', content: getRandomBingo(bingoCoppy)},
+					{type: 'td onclick="Change(this)"', content: getRandomBingo(bingoCoppy)},
 				]},
 			]},
 	]}

@@ -1,0 +1,25 @@
+table, th, td, caption {
+  border: 1px solid #a0a0a0;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  border-width: thin 0 0 thin;
+  margin: 0 0 1em;
+  table-layout: auto;
+  max-width: 100%;
+  background-color: #eae4dd;
+
+}
+th, td {
+  font-weight: normal;
+  text-align: center;
+  padding: 15px;
+  height: 120px;
+  width: 120px;
+}
+th, caption {
+  background-color: #f1f3f4;
+  font-weight: 700;
+}

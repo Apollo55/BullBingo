@@ -36,7 +36,7 @@ app.get('/', (req, res) => {
 	{ type: 'head', content: [
 		{ type: 'title', content: 'Bulshit Bingo' },
 		{ type: 'script', content: 'function Change(node){\n'+
-			'node.className="on";}'},
+			'if (node.className == "on"){' + '\n' + 'node.className="";}' + '\n' + 'else {node.className="on"}'},
 		{ type: 'link rel=\"stylesheet\" href=\"http://'+req.headers.host+'/css"'}]
 		},
 	{

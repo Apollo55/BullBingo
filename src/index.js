@@ -36,7 +36,7 @@ app.get('/', (req, res) => {
 	{ type: 'head', content: [
 		{ type: 'title', content: 'Bulshit Bingo' },
 		{ type: 'script', content: 'function Change(node){\n'+
-			'if (node.className == "on"){' + '\n' + 'node.className="";}' + '\n' + 'else {node.className="on"}'},
+			'if (node.className == "on"){' + '\n' + 'node.className="";}' + '\n' + 'else {node.className="on";}}'},
 		{ type: 'link rel=\"stylesheet\" href=\"http://'+req.headers.host+'/css"'}]
 		},
 	{
@@ -44,13 +44,13 @@ app.get('/', (req, res) => {
 		attributes: { style: 'padding: 1rem' },
 		content: [
 			{ type: 'table', content: [
-				{ type: 'caption', content: 'Sandras Sadistisches Bulshit Bingo'},
+				{ type: 'caption', content: 'Sandras Sadistisches Bullshit Bingo'},
 				{ type:'tr',content: [
 					{type: 'td onclick="Change(this)"', content: getRandomBingo(bingoCoppy)},
 					{type: 'td onclick="Change(this)"', content: getRandomBingo(bingoCoppy)},
 					{type: 'td onclick="Change(this)"', content: getRandomBingo(bingoCoppy)},
 					{type: 'td onclick="Change(this)"', content: getRandomBingo(bingoCoppy)},
-					{type: 'td onclick="Change(this")', content: getRandomBingo(bingoCoppy)},
+					{type: 'td onclick="Change(this)"', content: getRandomBingo(bingoCoppy)},
 				]},
 				{ type:'tr', content: [
 					{type: 'td onclick="Change(this)"', content: getRandomBingo(bingoCoppy)},
@@ -83,18 +83,10 @@ app.get('/', (req, res) => {
 			]},
 	]}
 	]);
-
-	filePath = 'src/data/temp/'+crypto.randomBytes(32).toString('hex')+'.html';
-	//html.renderHTMLToFile(filePath);
 	
 	newhtml = html.renderHTML();
-	fs.writeFile(filePath, newhtml, function (err) {
-		if (err) throw err;
-		console.log('Saved!');
-	});
 	
 	res.send(newhtml);
-	//res.sendFile(filePath,'Bulschit-Bingo.html');
 });
 
 app.listen(port, () =>

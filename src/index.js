@@ -34,7 +34,7 @@ app.get('/', (req, res) => {
 	
 	var html = new htmlCreator([
 	{ type: 'head', content: [
-		{ type: 'title', content: 'Bulshit Bingo' },
+		{ type: 'title', content: 'Bullshit Bingo' },
 		{ type: 'script', content: 'function Change(node){\n'+
 			'if (node.className == "on"){' + '\n' + 'node.className="";}' + '\n' + 'else {node.className="on";}}'},
 		{ type: 'link rel=\"stylesheet\" href=\"http://'+req.headers.host+'/css"'}]
@@ -90,5 +90,5 @@ app.get('/', (req, res) => {
 });
 
 app.listen(port, () =>
-  console.log('bulshitbingo Started'),
+  console.log('bullshitbingo Started'),
 );

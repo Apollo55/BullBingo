@@ -5,7 +5,7 @@ const fs = require('fs');
 const htmlCreator = require('html-creator');
 
 const app = express();
-const port = process.env.PORT;
+const port = process.env.PORT || 3000;
 const bingos = fs.readFileSync('src/data/bingo.config', 'utf8').split('\n');
 console.log(bingos);
 
@@ -19,6 +19,8 @@ function getRandomBingo(datas){
 	console.log(item);
 	return item;
 }
+
+
 
 app.get('/css', (req, res) => {
 	var options = {

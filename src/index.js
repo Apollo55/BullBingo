@@ -6,17 +6,17 @@ const htmlCreator = require('html-creator');
 const app = express();
 const port = process.env.PORT || 3000;
 const bingos = fs.readFileSync('src/data/bingo.config', 'utf8').split('\n');
-console.log(bingos);
 
-function getRandomBingo(datas){
-	i = Math.floor(Math.random() * datas.length);
-	console.log(i);
-	var item = datas[i];
-	console.log(datas);
-
-	datas.splice(i,1);
-	console.log(item);
-	return item;
+function getRandom(arr, n) {
+	var result = new Array(n),
+			len = arr.length,
+			taken = new Array(len);
+	while (n--) {
+			var x = Math.floor(Math.random() * len);
+			result[n] = arr[x in taken ? taken[x] : x];
+			taken[x] = --len in taken ? taken[len] : len;
+	}
+	return result;
 }
 
 app.get('/css', (req, res) => {
@@ -28,9 +28,8 @@ app.get('/css', (req, res) => {
 });
 
 app.get('/', (req, res) => {
-	bingoCoppy = [...bingos];
-	console.log(bingoCoppy);
-	
+	bingoVal = getRandom(bingos, 25);
+  
 	var html = new htmlCreator([
 	{ type: 'head', content: [
 		{ type: 'title', content: 'Bullshit Bingo' },
@@ -45,39 +44,39 @@ app.get('/', (req, res) => {
 			{ type: 'table', content: [
 				{ type: 'caption', content: 'Sandras Sadistisches Bullshit Bingo'},
 				{ type:'tr',content: [
-					{type: 'td onclick="Change(this)"', content: getRandomBingo(bingoCoppy)},
-					{type: 'td onclick="Change(this)"', content: getRandomBingo(bingoCoppy)},
-					{type: 'td onclick="Change(this)"', content: getRandomBingo(bingoCoppy)},
-					{type: 'td onclick="Change(this)"', content: getRandomBingo(bingoCoppy)},
-					{type: 'td onclick="Change(this)"', content: getRandomBingo(bingoCoppy)},
+					{type: 'td onclick="Change(this)"', content: bingoVal[0]},
+					{type: 'td onclick="Change(this)"', content: bingoVal[1]},
+					{type: 'td onclick="Change(this)"', content: bingoVal[2]},
+					{type: 'td onclick="Change(this)"', content: bingoVal[3]},
+					{type: 'td onclick="Change(this)"', content: bingoVal[4]},
 				]},
 				{ type:'tr', content: [
-					{type: 'td onclick="Change(this)"', content: getRandomBingo(bingoCoppy)},
-					{type: 'td onclick="Change(this)"', content: getRandomBingo(bingoCoppy)},
-					{type: 'td onclick="Change(this)"', content: getRandomBingo(bingoCoppy)},
-					{type: 'td onclick="Change(this)"', content: getRandomBingo(bingoCoppy)},
-					{type: 'td onclick="Change(this)"', content: getRandomBingo(bingoCoppy)},
+					{type: 'td onclick="Change(this)"', content: bingoVal[5]},
+					{type: 'td onclick="Change(this)"', content: bingoVal[6]},
+					{type: 'td onclick="Change(this)"', content: bingoVal[7]},
+					{type: 'td onclick="Change(this)"', content: bingoVal[8]},
+					{type: 'td onclick="Change(this)"', content: bingoVal[9]},
 				]},
 				{ type:'tr', content: [
-					{type: 'td onclick="Change(this)"', content: getRandomBingo(bingoCoppy)},
-					{type: 'td onclick="Change(this)"', content: getRandomBingo(bingoCoppy)},
-					{type: 'td onclick="Change(this)"', content: getRandomBingo(bingoCoppy)},
-					{type: 'td onclick="Change(this)"', content: getRandomBingo(bingoCoppy)},
-					{type: 'td onclick="Change(this)"', content: getRandomBingo(bingoCoppy)},
+					{type: 'td onclick="Change(this)"', content: bingoVal[10]},
+					{type: 'td onclick="Change(this)"', content: bingoVal[11]},
+					{type: 'td onclick="Change(this)"', content: bingoVal[12]},
+					{type: 'td onclick="Change(this)"', content: bingoVal[13]},
+					{type: 'td onclick="Change(this)"', content: bingoVal[14]},
 				]},
 				{ type:'tr', content: [
-					{type: 'td onclick="Change(this)"', content: getRandomBingo(bingoCoppy)},
-					{type: 'td onclick="Change(this)"', content: getRandomBingo(bingoCoppy)},
-					{type: 'td onclick="Change(this)"', content: getRandomBingo(bingoCoppy)},
-					{type: 'td onclick="Change(this)"', content: getRandomBingo(bingoCoppy)},
-					{type: 'td onclick="Change(this)"', content: getRandomBingo(bingoCoppy)},
+					{type: 'td onclick="Change(this)"', content: bingoVal[15]},
+					{type: 'td onclick="Change(this)"', content: bingoVal[16]},
+					{type: 'td onclick="Change(this)"', content: bingoVal[17]},
+					{type: 'td onclick="Change(this)"', content: bingoVal[18]},
+					{type: 'td onclick="Change(this)"', content: bingoVal[19]},
 				]},
 				{ type:'tr', content: [
-					{type: 'td onclick="Change(this)"', content: getRandomBingo(bingoCoppy)},
-					{type: 'td onclick="Change(this)"', content: getRandomBingo(bingoCoppy)},
-					{type: 'td onclick="Change(this)"', content: getRandomBingo(bingoCoppy)},
-					{type: 'td onclick="Change(this)"', content: getRandomBingo(bingoCoppy)},
-					{type: 'td onclick="Change(this)"', content: getRandomBingo(bingoCoppy)},
+					{type: 'td onclick="Change(this)"', content: bingoVal[20]},
+					{type: 'td onclick="Change(this)"', content: bingoVal[21]},
+					{type: 'td onclick="Change(this)"', content: bingoVal[22]},
+					{type: 'td onclick="Change(this)"', content: bingoVal[23]},
+					{type: 'td onclick="Change(this)"', content: bingoVal[24]},
 				]},
 			]},
 	]}

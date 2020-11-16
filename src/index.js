@@ -1,5 +1,4 @@
 require('dotenv').config();
-const crypto = require('crypto');
 const express = require('express');
 const fs = require('fs');
 const htmlCreator = require('html-creator');
@@ -19,8 +18,6 @@ function getRandomBingo(datas){
 	console.log(item);
 	return item;
 }
-
-
 
 app.get('/css', (req, res) => {
 	var options = {

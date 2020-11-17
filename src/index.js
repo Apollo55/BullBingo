@@ -1,7 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 const fs = require('fs');
-const htmlCreator = require('html-creator');
+const htmlCreator = require('html-creator');	
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -29,62 +29,46 @@ app.get('/css', (req, res) => {
 
 app.get('/', (req, res) => {
 	bingoVal = getRandom(bingos, 25);
-  
+	
 	var html = new htmlCreator([
-	{ type: 'head', content: [
-		{ type: 'title', content: 'Bullshit Bingo' },
-		{ type: 'script', content: 'function Change(node){\n'+
-			'if (node.className == "on"){' + '\n' + 'node.className="";}' + '\n' + 'else {node.className="on";}}'},
-		{ type: 'link rel=\"stylesheet\" href=\"http://'+req.headers.host+'/css"'}]
+		{ type: 'head', content: [
+			{ type: 'title', content: 'Bullshit Bingo' },
+			{ type: 'script', content: 'function Change(node){\n'+
+				'if (node.className == "on"){' + '\n' + 'node.className="";}' + '\n' + 'else {node.className="on";}}'},
+			{ type: 'link rel=\"stylesheet\" href=\"http://'+req.headers.host+'/css"'}]
 		},
-	{
-		type: 'body',
-		attributes: { style: 'padding: 1rem' },
-		content: [
-			{ type: 'table', content: [
-				{ type: 'caption', content: 'Sandras Sadistisches Bullshit Bingo'},
-				{ type:'tr',content: [
-					{type: 'td onclick="Change(this)"', content: bingoVal[0]},
-					{type: 'td onclick="Change(this)"', content: bingoVal[1]},
-					{type: 'td onclick="Change(this)"', content: bingoVal[2]},
-					{type: 'td onclick="Change(this)"', content: bingoVal[3]},
-					{type: 'td onclick="Change(this)"', content: bingoVal[4]},
-				]},
-				{ type:'tr', content: [
-					{type: 'td onclick="Change(this)"', content: bingoVal[5]},
-					{type: 'td onclick="Change(this)"', content: bingoVal[6]},
-					{type: 'td onclick="Change(this)"', content: bingoVal[7]},
-					{type: 'td onclick="Change(this)"', content: bingoVal[8]},
-					{type: 'td onclick="Change(this)"', content: bingoVal[9]},
-				]},
-				{ type:'tr', content: [
-					{type: 'td onclick="Change(this)"', content: bingoVal[10]},
-					{type: 'td onclick="Change(this)"', content: bingoVal[11]},
-					{type: 'td onclick="Change(this)"', content: bingoVal[12]},
-					{type: 'td onclick="Change(this)"', content: bingoVal[13]},
-					{type: 'td onclick="Change(this)"', content: bingoVal[14]},
-				]},
-				{ type:'tr', content: [
-					{type: 'td onclick="Change(this)"', content: bingoVal[15]},
-					{type: 'td onclick="Change(this)"', content: bingoVal[16]},
-					{type: 'td onclick="Change(this)"', content: bingoVal[17]},
-					{type: 'td onclick="Change(this)"', content: bingoVal[18]},
-					{type: 'td onclick="Change(this)"', content: bingoVal[19]},
-				]},
-				{ type:'tr', content: [
-					{type: 'td onclick="Change(this)"', content: bingoVal[20]},
-					{type: 'td onclick="Change(this)"', content: bingoVal[21]},
-					{type: 'td onclick="Change(this)"', content: bingoVal[22]},
-					{type: 'td onclick="Change(this)"', content: bingoVal[23]},
-					{type: 'td onclick="Change(this)"', content: bingoVal[24]},
-				]},
-			]},
-	]}
+		{
+			type: 'body',
+			attributes: { style: 'padding: 1rem' },
+			content: [
+				{ type: 'table'}
+		]}
 	]);
-	
-	newhtml = html.renderHTML();
-	
-	res.send(newhtml);
+
+	//create table content
+	j = 0;
+	for (i=0;i<5;i++) {
+		
+		//create table-row id
+		trname = 'tr' + i;
+		
+		//create table-rows
+		html.document.addElementToType('table', {
+			type: 'tr', 
+			attributes: { id: trname }
+		});
+
+		//create table-data
+		for (k=0;k<5;k++) {
+			html.document.addElementToId(trname, {
+				type: 'td onclick="Change(this)"',
+				content: bingoVal[j]
+			});
+			j++
+		}
+	}
+		
+	res.send(html.renderHTML());
 });
 
 app.listen(port, () =>
